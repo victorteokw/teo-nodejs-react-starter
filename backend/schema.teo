@@ -1,0 +1,24 @@
+connector {
+  provider: .sqlite,
+  url: "sqlite:./db.sqlite"
+}
+
+server {
+  bind: ("0.0.0.0", 5800)
+}
+
+client frontend {
+    provider: .typeScript,
+    dest: "../frontend/src/teo",
+    host: "http://localhost:5800",
+    package: false,
+}
+
+model Example {
+  @id @autoIncrement @readonly
+  id: Int
+  string: String?
+  int: Int?
+  float: Float?
+  datetime: DateTime?
+}
